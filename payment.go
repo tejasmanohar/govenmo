@@ -116,6 +116,10 @@ func (a *Account) PayOrCharge(target Target, amount float64, note string, audien
 		params.Set("user_id", target.User.Id)
 	}
 
+	if target.User.Username != "" {
+		params.Set("username", target.User.Username)
+	}
+
 	url := apiRoot() + "/payments"
 
 	params.Set("note", note)
